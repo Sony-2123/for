@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>College Admission Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-container {
+      background:white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: black;
+      width: 300px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid white;
+      border-radius: 5px;
+    }
+
+    .error {
+      color: red;
+      font-size: 0.9em;
+      margin-bottom: 5px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <h2>College Login</h2>
+    <form id="loginForm">
+      <label for="username">Username:</label>
+      <input type="text" id="username" />
+      <div id="userError" class="error"></div>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" />
+      <div id="passError" class="error"></div>
+
+      <button type="submit">Login</button>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('loginForm');
+    const username = document.getElementById('username');
+    const password = document.getElementById('password');
+    const userError = document.getElementById('userError');
+    const passError = document.getElementById('passError');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      let isValid = true;
+
+      userError.textContent = '';
+      passError.textContent = '';
+
+      if (username.value.trim() === '') {
+        userError.textContent = 'Username is required';
+        isValid = false;
+      }
+
+      if (password.value.trim() === '') {
+        passError.textContent = 'Password is required';
+        isValid = false;
+      } else if (password.value.length < 6) {
+        passError.textContent = 'Password must be at least 6 characters';
+        isValid = false;
+      }
+
+      if (isValid) {
+        alert('Login successful!');
+    
+        location.href = "dashboard.html"; 
+      }
+    });
+
+ 
+
+  </script>
+
+</body>
+</html>
